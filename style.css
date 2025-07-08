@@ -1,0 +1,67 @@
+body {
+  font-family: 'Yomogi', cursive;
+  background: #fefdf8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+input[type="file"] {
+  margin: 1em 0;
+}
+
+button {
+  background-color: #ffd6d6;
+  border: none;
+  padding: 0.8em 1.5em;
+  font-size: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffbdbd;
+}
+
+#previewContainer {
+  margin: 1em 0;
+}
+
+#previewImage {
+  max-width: 100%;
+  border-radius: 10px;
+  display: none;
+}
+
+#result {
+  margin-top: 2em;
+  animation: fadeIn 1s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#animalImage {
+  width: 100px;
+  margin-bottom: 1em;
+}
