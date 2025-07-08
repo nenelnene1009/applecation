@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>管理画面 - 診断結果一覧</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+    th { background: #f4f4f4; }
+    img { max-width: 100px; }
+  </style>
+</head>
+<body>
+  <h1>診断結果一覧</h1>
+  <table id="resultsTable">
+    <thead>
+      <tr>
+        <th>日時</th>
+        <th>ファイル名</th>
+        <th>動物タイプ</th>
+        <th>画像</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function loadResults() {
+      const res = await fetch("/api/admin");
+      const data = await res.json();
+      const tbody = document.querySelector("#resultsTable tbody");
+      tbody.innerHTML = "";
+      data.forEach(item => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${new Date(item.timestamp).toLocaleString()}</td>
+          <td>${item.originalname}</td>
+          <td>${item.type}</td>
+          <td><img src="/uploads/${item.filename}" alt="upload" /></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    loadResults();
+  </script>
+</body>
+</html>
